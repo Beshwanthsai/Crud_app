@@ -30,6 +30,24 @@ public class TodoController {
         return repo.save(todos);
     }
 
-//    @PutMapping("/todos/")
-//    public Todo UpdateTodo(@Reque)
+    @PutMapping("/todos/update/{id}")
+    @ResponseStatus(code = HttpStatus.ACCEPTED)
+    public Todo UpdateTodo(@PathVariable Long id,@RequestBody Todo todo){
+        todo.setId(id);
+        repo.save(todo);
+        return todo;
+    }
+
+    @DeleteMapping("/todos/delete/{id}")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    public void DeleteTodo(@PathVariable Long id){
+        repo.deleteById(id.intValue());
+
+    }
+
+    @DeleteMapping("/todos/deleteall")
+    @ResponseStatus(code = HttpStatus.NO_CONTENT)
+    public void DeleteAllTodos(){
+        repo.deleteAll();
+    }
 }
