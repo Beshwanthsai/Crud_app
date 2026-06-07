@@ -9,14 +9,15 @@ public class Todo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "Title")
+    @Column(name = "title")
     private String title;
-    @Column(name = "Description")
+    @Column(name = "description")
     private String description;
     @Column(name = "status")
     private Boolean status;
 
-
+    public Todo(){
+    }
     public Todo(Boolean status, String description, String title) {
         this.status = status;
         this.description = description;
