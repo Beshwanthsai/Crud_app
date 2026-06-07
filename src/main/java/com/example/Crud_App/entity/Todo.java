@@ -8,29 +8,26 @@ import jakarta.persistence.*;
 public class Todo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     @Column(name = "Title")
     private String title;
     @Column(name = "Description")
     private String description;
     @Column(name = "status")
-    private boolean status;
+    private Boolean status;
 
-    public Todo() {
 
-    }
-
-    public Todo(String title, String description, boolean status) {
-        this.title = title;
-        this.description = description;
+    public Todo(Boolean status, String description, String title) {
         this.status = status;
+        this.description = description;
+        this.title = title;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -50,21 +47,21 @@ public class Todo {
         this.description = description;
     }
 
-    public boolean isStatus() {
+    public Boolean getStatus() {
         return status;
     }
 
-    public void setStatus(boolean done) {
-        this.status = done;
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 
     @Override
     public String toString() {
         return "Todo{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
+                "title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", status=" + status +
+                ", id=" + id +
                 '}';
     }
 }
